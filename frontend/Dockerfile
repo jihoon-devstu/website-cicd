@@ -2,6 +2,10 @@
 FROM node:22.12-alpine AS reactbuild
 WORKDIR /website/frontend
 
+ARG VITE_API_SERVER_HOST
+
+ENV VITE_API_SERVER_HOST=$VITE_API_SERVER_HOST
+
 # package.json, package-lock.json 파일 복사 후 패키지 설치
 COPY package*.json ./
 RUN npm ci
